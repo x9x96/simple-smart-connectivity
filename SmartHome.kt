@@ -215,7 +215,89 @@ class RangeRegulator(
         }
     }
 }
-
 fun main() {    
+	var smartHome = SmartHome(SmartTvDevice("Android TV", "Entertainment"), SmartLightDevice("Google Light", "Utility"))
+    
+   println("START of running (19) Test cases\n\n")
+    
+   println("::T_001:: testing on Tv")
+   smartHome.turnOnTv()
 
+    println("\n::T_002:: testing printing Smart Tv info")    
+    smartHome.printSmartTvInfo()
+
+    println("\n::T_003:: testing Tv INCREASE vol to 4")
+    smartHome.increaseTvVolume()
+	smartHome.increaseTvVolume()
+    
+    println("\n::T_004:: testing REDUCE Tv vol to 0")
+    smartHome.decreaseTvVolume()
+    smartHome.decreaseTvVolume()
+    smartHome.decreaseTvVolume()
+    smartHome.decreaseTvVolume()
+    
+    println("\n::T_005:: testing REDUCE Tv vol: should not go below 0")
+    smartHome.decreaseTvVolume()
+    smartHome.decreaseTvVolume()
+    
+    println("\n::T_006:: testing NEXT Tv channel to 2")
+    smartHome.changeTvChannelToNext()
+    println("\n::T_007:: testing PREV Tv channel to 1")
+    smartHome.changeTvChannelToPrevious()
+    
+    println("\n::T_008:: testing off Tv")
+    smartHome.turnOffTv()
+    println("\n::T_009:: testing Tv vol should not respond because Tv is off")
+    smartHome.increaseTvVolume()
+
+    println("\n::T_010:: testing on Light")
+    smartHome.turnOnLight()   
+    
+    println("\n::T_011:: testing printing Smart Light info")    
+    smartHome.printSmartLightInfo()    
+    
+    println("\n::T_012:: testing INCREASE Light brightness to 11")
+	smartHome.increaseLightBrightness()
+
+    println("\n::T_013:: testing DECREASE Light brightness to lowest = 2")
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+	smartHome.decreaseLightBrightness()
+   smartHome.decreaseLightBrightness()
+
+	println("\n::T_014:: testing DECREASE Light brightness: should not go below 2")    
+	smartHome.decreaseLightBrightness()
+   smartHome.decreaseLightBrightness()
+    
+   println("\n::T_015:: testing off Light\n")
+   smartHome.turnOffLight()    
+   println("\n::T_016:: testing Light brightness should not respond because light is off")
+   smartHome.increaseLightBrightness()
+
+    println("\n::: testing on Light AGAIN")
+    smartHome.turnOnLight()
+    
+    println("\n::T_017:: testing to off all when ONLY Light is on")
+    smartHome.turnOffAllDevices()
+
+    println("\n::: testing on Tv AGAIN")
+    smartHome.turnOnTv()
+
+    println("\n::T_018:: testing to off all when ONLY Tv is on")
+    smartHome.turnOffAllDevices()
+
+    println("\n::: testing on Light")
+    smartHome.turnOnLight()
+    println("::: testing on Tv")
+    smartHome.turnOnTv()
+
+    println("\n::T_019:: testing to off BOTH Light AND Tv")
+    smartHome.turnOffAllDevices()
+    
+    println("\n\nEND of running (19) Test cases")    
 }
