@@ -106,3 +106,94 @@ class SmartLightDevice(deviceName: String, deviceCategory: String) :
         super.printDeviceInfo()
     }
 }
+
+class SmartHome(
+    val smartTvDevice: SmartTvDevice,
+    val smartLightDevice: SmartLightDevice
+) {
+
+    var tvTurnOnCount = 0
+        private set
+    
+    var lightTurnOnCount = 0
+        private set
+
+    //smart TV functions    
+    fun turnOnTv() {
+        tvTurnOnCount++
+        smartTvDevice.turnOn()
+    }
+    
+    fun turnOffTv() {
+        tvTurnOnCount--
+        smartTvDevice.turnOff()
+    }
+    
+    fun increaseTvVolume(status : Int = tvTurnOnCount) { 
+       if (status == 1) {
+        	smartTvDevice.increaseSpeakerVolume()
+    	}
+    }    
+
+    fun decreaseTvVolume(status : Int = tvTurnOnCount) { 
+       if (status == 1) {
+        	smartTvDevice.decreaseSpeakerVolume()
+    	}
+    }    
+    
+    fun changeTvChannelToNext(status : Int = tvTurnOnCount) { 
+    	if (status == 1) {
+       		smartTvDevice.nextChannel()
+        }
+    }
+
+    fun changeTvChannelToPrevious(status : Int = tvTurnOnCount) { 
+    	if (status == 1) {
+       		smartTvDevice.previousChannel()
+        }
+    }
+    
+    fun printSmartTvInfo() {
+        smartTvDevice.printTVInfo()
+    }
+    
+    //smart light functions
+    fun turnOnLight() {
+        lightTurnOnCount++
+        smartLightDevice.turnOn()
+    }
+
+    fun turnOffLight() {
+        lightTurnOnCount--
+        smartLightDevice.turnOff()
+    }
+
+    fun increaseLightBrightness(status : Int = lightTurnOnCount) { 
+    	if (status == 1) {
+        smartLightDevice.increaseBrightness()
+        }
+    }
+
+    fun decreaseLightBrightness(status : Int = lightTurnOnCount) { 
+    	if (status == 1) {
+        smartLightDevice.decreaseBrightness()
+        }
+    }
+    
+    fun printSmartLightInfo() {
+       smartLightDevice.printLightInfo()
+    }    
+    
+    fun turnOffAllDevices(
+        deviceStatus1 : Int = tvTurnOnCount,
+		deviceStatus2 : Int = lightTurnOnCount
+    ) {
+		if (deviceStatus1 == 1) {  
+        	turnOffTv()
+        }
+        if (deviceStatus2 == 1) {  
+        	turnOffLight()
+        }
+    }
+}
+
